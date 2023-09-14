@@ -40,18 +40,28 @@ function timeToGo(s) {
 
 // Timer function end
 
+let dateTargetISOString = '2023-09-14T16:00:00.000Z'
+
 let updateTimer = () => {
+  let timer = document.querySelector('.timer');
   let timerSpan = document.querySelector('.timer__text');
-  let timerText = timeToGo('2023-09-14T16:00:00.000Z');
+  let timerText = timeToGo(dateTargetISOString);
 
   timerSpan.innerHTML = timerText;
+
+  if (Date.now() >= new Date(dateTargetISOString).valueOf()) {
+    timer.style.display = "none";
+  }
 }
 
 // Timer
 updateTimer();
-setInterval(() => {
-  updateTimer();
-}, 1000)
+if (! (Date.now() >= new Date(dateTargetISOString).valueOf())) {
+  setInterval(() => {
+    updateTimer();
+  }, 1000)
+}
+
 
 
 // Click to Turn
@@ -62,7 +72,6 @@ let giftCover = document.querySelector('.gift-cover'); //For part 1 animation (t
 let addGiftTurn = () => {
   gift.classList.add('animate__turn');
   giftCover.classList.add('animate__turn');
-  console.log('hehe');
 }
 
 
@@ -86,7 +95,6 @@ gift.onclick = () => {
     }
     // Add event listener to giftCover
     giftPart2Cover.onclick = () => {
-      console.log('chenen');
       addOpenGift();
 
       setTimeout(() => {
