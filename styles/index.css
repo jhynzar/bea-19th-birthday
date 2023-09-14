@@ -5,6 +5,20 @@ body {
   font-family: 'Kaushan Script','Sail', cursive;
 }
 
+.timer {
+  display: flex;
+  position: absolute;
+  z-index: 999;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Patua One', cursive;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  font-size: 5rem;
+}
+
 .container {
   display: flex;
   justify-content: center;

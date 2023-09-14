@@ -5,6 +5,49 @@
 // 5. Zoom in
 // 6. Happy Birthday
 
+// Timer Function
+function isoToObj(s) {
+  var b = s.split(/[-TZ:]/i);
+
+  return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5]));
+
+}
+
+
+function timeToGo(s) {
+
+  // Utility to add leading zero
+  function z(n) {
+    return (n < 10? '0' : '') + n;
+  }
+
+  // Convert string to date object
+  var d = isoToObj(s);
+  var diff = d - new Date();
+
+  // Allow for previous times
+  var sign = diff < 0? '-' : '';
+  diff = Math.abs(diff);
+
+  // Get time components
+  var hours = diff/3.6e6 | 0;
+  var mins  = diff%3.6e6 / 6e4 | 0;
+  var secs  = Math.round(diff%6e4 / 1e3);
+
+  // Return formatted string
+  return sign + z(hours) + ':' + z(mins) + ':' + z(secs);   
+}
+
+// Timer function end
+
+// Timer
+setInterval(() => {
+  let timerSpan = document.querySelector('.timer__text');
+  let timerText = timeToGo('2023-09-14T16:00:00.000Z');
+
+  timerSpan.innerHTML = timerText;
+}, 1000)
+
 
 // Click to Turn
 let gift = document.querySelector('.gift');
