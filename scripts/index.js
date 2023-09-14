@@ -40,12 +40,17 @@ function timeToGo(s) {
 
 // Timer function end
 
-// Timer
-setInterval(() => {
+let updateTimer = () => {
   let timerSpan = document.querySelector('.timer__text');
   let timerText = timeToGo('2023-09-14T16:00:00.000Z');
 
   timerSpan.innerHTML = timerText;
+}
+
+// Timer
+updateTimer();
+setInterval(() => {
+  updateTimer();
 }, 1000)
 
 
